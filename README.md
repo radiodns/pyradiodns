@@ -1,27 +1,20 @@
-Introduction
-============
+[![Build Status](https://travis-ci.org/radiodns/pyradiodns.png?branch=master)](https://travis-ci.org/radiodns/pyradiodns)
 
-A Python library that facilitates the resolution of an authoritative Fully Qualified Domain Name (FQDN) from the broadcast parameters of an audio service.
+## pyradiodns
 
-From this FQDN it is then possible to discover the advertisement of IP-based applications provided in relation to the queried audio service.
+`pyradiodns` is a Python library that facilitates the resolution of an authoritative Fully Qualified Domain Name (FQDN) from the broadcast parameters of an audio service.
 
-For more information about RadioDNS, please see the official documentation: http://radiodns.org/docs
+From this FQDN it is then possible to discover the advertisement of IP-based applications provided in relation to the queried audio service. For more information about RadioDNS, please see the official documentation: http://radiodns.org/docs
 
 This is a port of php-radiodns.
 
-Installation
-------------
+### Installation
 
-This library depends on dns.resolver, which can be installed from the command line using easy_install dnspython, or by downloading it from http://dnspython.org.
-
-You can install it using `pip`:
+You can install `pyradiodns` using `pip`, like so:
 
     pip install pyradiodns
 
-Usage
------
-
-There is an example.py included, but simply:
+### Example Usage
 
     from pyradiodns.rdns import RadioDNS
     
