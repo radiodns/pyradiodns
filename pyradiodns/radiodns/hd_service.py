@@ -22,7 +22,7 @@ class RadioDNS_HDService(RadioDNS_Service):
       return None
       
       
-  def toFQDN(self):
+  def fqdn(self):
     fqdn = "%s.%s.radiodns.org" % (self.sid, self.type)
     fqdn = fqdn.lower()
     return fqdn

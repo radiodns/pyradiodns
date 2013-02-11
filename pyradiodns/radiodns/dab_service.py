@@ -55,7 +55,7 @@ class RadioDNS_DABService(RadioDNS_Service):
       self.data = None  
       
       
-  def toFQDN(self):
+  def fqdn(self):
     fqdn = "%s.%s.%s.%s.dab.radiodns.org" % (self.scids, self.sid, self.eid, self.ecc)
     if self.data:
       if self.xpad:

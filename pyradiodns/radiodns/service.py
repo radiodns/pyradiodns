@@ -14,7 +14,7 @@ class RadioDNS_Service:
   def resolveAuthorativeFQDN(self):
     if not self.dns_resolver:
       self.setupDNSResolver()
-    r = self.dns_resolver.query(self.toFQDN(), 'CNAME')
+    r = self.dns_resolver.query(self.fqdn(), 'CNAME')
     if not r:
       return False
     if not r.response.answer[0].items:
@@ -22,7 +22,7 @@ class RadioDNS_Service:
     self.cached_authorative_fqdn = r.response.answer[0].items[0].to_text()
     return self.cached_authorative_fqdn
     
-  def resolveApplication(self, application_id, transport_protocol='TCP'):
+  def resolve(self, application_id, transport_protocol='TCP'):
     if self.cached_authorative_fqdn:
       authorative_fqdn = self.cached_authorative_fqdn
     else:

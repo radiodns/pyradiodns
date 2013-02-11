@@ -6,7 +6,7 @@
 
 From this FQDN it is then possible to discover the advertisement of IP-based applications provided in relation to the queried audio service. For more information about RadioDNS, please see the official documentation: http://radiodns.org/docs
 
-This is a port of php-radiodns.
+This library is essentially a port of php-radiodns.
 
 ### Installation
 

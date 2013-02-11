@@ -1,7 +1,7 @@
 import unittest
 from pyradiodns.radiodns.am_service import RadioDNS_AMService
 
-class TestRadioDNSAmService(unittest.TestCase):
+class TestRadioDNSAMService(unittest.TestCase):
 
     def setUp(self):
         pass
@@ -10,8 +10,16 @@ class TestRadioDNSAmService(unittest.TestCase):
         service = RadioDNS_AMService('drm', 'abcd01')
         self.assertEqual('abcd01', service.sid)
 
+    def test_it_stores_a_valid_type(self):
+        service = RadioDNS_AMService('drm', 'abcd01')
+        self.assertEqual('drm', service.type)
+
     def test_it_transforms_an_uppercase_sid(self):
         service = RadioDNS_AMService('drm', 'ABCD01')
+        self.assertEqual('abcd01', service.sid)
+
+    def test_it_transforms_an_uppercase_type(self):
+        service = RadioDNS_AMService('DRM', 'abcd01')
         self.assertEqual('abcd01', service.sid)
 
     def test_it_refuses_an_invalid_sid(self):
