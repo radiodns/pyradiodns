@@ -14,7 +14,9 @@ Installation
 
 This library depends on dns.resolver, which can be installed from the command line using easy_install dnspython, or by downloading it from http://dnspython.org.
 
-At present, there is no setup.py method of installation.
+You can install it using `pip`:
+
+    pip install pyradiodns
 
 Usage
 -----
