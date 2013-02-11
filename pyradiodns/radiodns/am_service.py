@@ -4,25 +4,16 @@ import re
 class RadioDNS_AMService(RadioDNS_Service):
   
   def __init__(self, type, sid):
-    # Compile regex patterns
-    sid_pattern = re.compile('^[0-9A-F]{6}$')
-    
-    # Type
     if type == 'drm' or type == 'amss':
       self.type = type
     else:
-      print 'Invalid type value. Must be either \'drm\' (Digital Radio Mondiale) or \'amss\' (AM Signalling System).'
-      return None
+      raise ValueError("Type value must be either 'drm' or 'amss'")
     
-    # SID
-    if sid_pattern.match(sid):
-      self.sid = sid
+    if re.compile('^[0-9A-Fa-f]{6}$').match(sid):
+      self.sid = sid.lower()
     else:
-      print('Invalid Service Identifier (SId) value. Must be a valid 6-character hexadecimal.');
-      return None
+      raise ValueError('Service Identifier (SId) must be a valid 6-character hexadecimal.');
       
-      
-  def toFQDN(self):
+  def fqdn(self):
     fqdn = "%s.%s.radiodns.org" % (self.sid, self.type)
-    fqdn = fqdn.lower()
-    return fqdn
+    return fqdn.lower()

@@ -1,6 +1,3 @@
-# pyradiodns
-# A RadioDNS library for Python, based 
-
 from radiodns.am_service import RadioDNS_AMService
 from radiodns.dab_service import RadioDNS_DABService
 from radiodns.fm_service import RadioDNS_FMService
