@@ -28,8 +28,8 @@ class RadioDNS_HDService(RadioDNS_Service):
       raise ValueError('Invalid Multicast Value. Must be 1 decimal character.');
       
   def fqdn(self):
-    fqdn = "%s.%s.radiodns.org" % (self.tx, self.cc) 
+    fqdn = "%s.%s.hd.adiodns.org" % (self.tx, self.cc) 
     if self.mid != None:
-        fqdn = "%s." + fqdn % (self.mid)
+        fqdn = ("%s." % (self.mid)) + fqdn
     
     return fqdn.lower()
