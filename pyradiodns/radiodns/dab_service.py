@@ -15,7 +15,7 @@ class RadioDNS_DABService(RadioDNS_Service):
     if ecc_pattern.match(ecc):
       self.ecc = ecc
     else:
-      print('Invalid Extended Country Code (ECC) value. Must be a valid 3-character hexadecimal.');
+      print('Invalid Global Country Code (GCC) value. Must be a valid 3-character hexadecimal.');
       return None
       
     # EID
