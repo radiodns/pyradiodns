@@ -34,15 +34,15 @@ class RadioDNS_Service:
       self.setupDNSResolver()
     try:
       r = self.dns_resolver.query(application_fqdn, 'SRV')
-      if len(r.response.answer) == 0:
+      if len(r) == 0:
         return False
       results = []
-      for answer in r.response.answer:
+      for answer in r:
         results.append({
-          'target': r.response.answer[0].items[0].target.to_text(),
-          'port': r.response.answer[0].items[0].port,
-          'priority': r.response.answer[0].items[0].priority,
-          'weight': r.response.answer[0].items[0].weight,
+          'target': r.target,
+          'port': r.port,
+          'priority': r.priority,
+          'weight': r.weight,
         })
       return results
     except dns.resolver.NXDOMAIN:
