@@ -6,7 +6,7 @@ class TestService(unittest.TestCase):
 
     def test_it_actually_works(self):
         rdns = RadioDNS()
-        rsp = rdns.lookup_dab('CE1', 'C199', 'C5C9', 0)
+        rsp = rdns.lookup_dab('CE1', 'CE15', 'C221', 0)
 
         epg = rsp['applications']['radioepg']
         tag = rsp['applications']['radiotag']
@@ -17,7 +17,7 @@ class TestService(unittest.TestCase):
         self.assertEqual(True, vis['supported'])
         self.assertEqual(
             [{'priority': 0,
-            'target': 'srv.foldermedia.com.',
+            'target': 'stomp.radiovis.api.bbci.co.uk.',
             'weight': 100,
             'port': 80}],
             rsp['applications']['radiovis']['servers'])
