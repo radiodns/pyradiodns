@@ -39,10 +39,10 @@ class RadioDNS_Service:
       results = []
       for answer in r:
         results.append({
-          'target': r.target,
-          'port': r.port,
-          'priority': r.priority,
-          'weight': r.weight,
+          'target': answer.target,
+          'port': answer.port,
+          'priority': answer.priority,
+          'weight': answer.weight,
         })
       return results
     except dns.resolver.NXDOMAIN:
