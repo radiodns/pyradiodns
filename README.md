@@ -10,14 +10,17 @@ This library is essentially a port of php-radiodns.
 
 ### Installation
 
-You can install `pyradiodns` using `pip`, like so:
+Download the entire package, then do
 
-    pip install pyradiodns
+    cd pyradiodns
+    sudo python setup.py install
+    
+which will install pyradiodns to your local packages
 
 ### Example Usage
 
     from pyradiodns.rdns import RadioDNS
     
     rdns = RadioDNS()
-    rsp = rdns.lookupDABService('CE1', 'C199', 'C5C9', 0)
+    rsp = rdns.lookup_dab('ce1', 'ce15', 'c221', 0)
     print rsp
