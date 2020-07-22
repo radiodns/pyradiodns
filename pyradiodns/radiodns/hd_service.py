@@ -3,26 +3,33 @@ import re
 
 class RadioDNS_HDService(RadioDNS_Service):
   
-  def __init__(self, type, sid):
+  def __init__(self, cc, tx, mid=""):
     # Compile regex patterns
-    sid_pattern = re.compile('^[0-9A-F]{6}$')
+    cc_pattern = re.compile('^[0-9]{3}$')
+    tx_pattern = re.compile('^[0-9]{5}$')
+    mid_pattern = re.compile('[0-9]{1}')
     
-    # Type
-    if type == 'drm' or type == 'amss':
-      self.type = type
+    # Country Check
+    if cc_pattern.match(cc):
+      self.cc = cc
     else:
-      print 'Invalid type value. Must be either \'drm\' (Digital Radio Mondiale) or \'amss\' (AM Signalling System).'
-      return None
-    
-    # SID
-    if sid_pattern.match(sid):
-      self.sid = sid
-    else:
-      print('Invalid Service Identifier (SId) value. Must be a valid 6-character hexadecimal.');
-      return None
+      raise ValueError('Invalid Country Value. Must be 3 decimal characters.');
       
+    # Facility ID check
+    if tx_pattern.match(tx):
+      self.tx = tx
+    else:
+      raise ValueError('Invalid Facility Value. Must be 5 decimal characters.');
+    
+    # Multicast ID
+    if mid_pattern.match(mid):
+      self.mid = mid
+    else:
+      raise ValueError('Invalid Multicast Value. Must be 1 decimal character.');
       
   def fqdn(self):
-    fqdn = "%s.%s.radiodns.org" % (self.sid, self.type)
-    fqdn = fqdn.lower()
-    return fqdn
+    fqdn = "%s.%s.radiodns.org" % (self.tx, self.cc) 
+    if mid.self != "":
+        fqdn = "%s." + fqdn % (self.mid)
+    
+    return fqdn.lower()

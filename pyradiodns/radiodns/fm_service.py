@@ -9,14 +9,10 @@ class RadioDNS_FMService(RadioDNS_Service):
         pi_pattern = re.compile('^[0-9A-Fa-f]{4}$')
 
         # Country
-        if len(country) == 2:
-            self.rds_cc_ecc = None
-            self.iso3166_country_code = country
-        elif country_pattern.match(country):
-            self.rds_cc_ecc = country
-            self.iso3166_country_code = None
+        if country_pattern.match(country):
+            self.country = country
         else:
-            raise ValueError('Invalid country')
+            raise ValueError('Invalid GCC code')
 
         # TODO Tidy this up
         # Must be a valid hexadecimal RDS Programme Identifier (PI) code
@@ -27,6 +23,9 @@ class RadioDNS_FMService(RadioDNS_Service):
             self.pi = pi
         else:
             raise ValueError('Invalid PI value')
+            
+        if self.country[0] != self.pi[0]:
+            raise ValueError('GCC and PI code should start with the same character')
 
         if isinstance(frequency, float) or isinstance(frequency, int):
             if frequency > 108:
@@ -38,7 +37,6 @@ class RadioDNS_FMService(RadioDNS_Service):
             raise ValueError('Frequency must be a number')
 
     def fqdn(self):
-        country = self.rds_cc_ecc or self.iso3166_country_code
         fqdn = "%05d.%s.%s.fm.radiodns.org" %\
-            (self.frequency * 100, self.pi, country)
+            (self.frequency * 100, self.pi, self.country)
         return fqdn.lower()
