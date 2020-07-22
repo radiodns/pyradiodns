@@ -19,7 +19,7 @@ class TestService(unittest.TestCase):
             [{'priority': 0,
             'target': 'stomp.radiovis.api.bbci.co.uk.',
             'weight': 100,
-            'port': 80}],
+            'port': 61613}],
             rsp['applications']['radiovis']['servers'])
 
 if __name__ == '__main__':
