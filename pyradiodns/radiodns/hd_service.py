@@ -22,14 +22,14 @@ class RadioDNS_HDService(RadioDNS_Service):
       raise ValueError('Invalid Facility Value. Must be 5 decimal characters.');
     
     # Multicast ID
-    if mid == "" or mid_pattern.match(mid):
+    if mid == None or mid_pattern.match(mid):
       self.mid = mid
     else:
       raise ValueError('Invalid Multicast Value. Must be 1 decimal character.');
       
   def fqdn(self):
     fqdn = "%s.%s.radiodns.org" % (self.tx, self.cc) 
-    if mid.self != "":
+    if self.mid != None:
         fqdn = "%s." + fqdn % (self.mid)
     
     return fqdn.lower()
