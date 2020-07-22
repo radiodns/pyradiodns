@@ -3,7 +3,7 @@ import re
 
 class RadioDNS_HDService(RadioDNS_Service):
   
-  def __init__(self, cc, tx, mid=""):
+  def __init__(self, cc, tx, mid):
     # Compile regex patterns
     cc_pattern = re.compile('^[0-9]{3}$')
     tx_pattern = re.compile('^[0-9]{5}$')
@@ -22,7 +22,7 @@ class RadioDNS_HDService(RadioDNS_Service):
       raise ValueError('Invalid Facility Value. Must be 5 decimal characters.');
     
     # Multicast ID
-    if mid_pattern.match(mid):
+    if mid == "" or mid_pattern.match(mid):
       self.mid = mid
     else:
       raise ValueError('Invalid Multicast Value. Must be 1 decimal character.');

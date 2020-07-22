@@ -24,8 +24,8 @@ class RadioDNS:
         service = RadioDNS_FMService(country, pi, frequency)
         return self.__lookup(service)
 
-    def lookup_hd(self, tx=None, cc=None):
-        service = RadioDNS_HDService(tx, cc)
+    def lookup_hd(self, cc=None, tx=None, mid=None):
+        service = RadioDNS_HDService(cc, tx, mid)
         return self.__lookup(service)
 
     def __lookup(self, service):
