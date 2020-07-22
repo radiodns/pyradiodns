@@ -5,7 +5,7 @@ class TestRadioDNSFMService(unittest.TestCase):
 
     def test_it_recognises_an_rds_cc_ecc(self):
         service = RadioDNS_FMService('ce1', 'c0c0', 107)
-        self.assertEqual('ce1', service.rds_cc_ecc)
+        self.assertEqual('ce1', service.country)
     
     def test_it_accepts_frequency_as_integer(self):
         service = RadioDNS_FMService('ce1', 'c0c0', 107)
