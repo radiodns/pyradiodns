@@ -12,7 +12,7 @@ class TestService(unittest.TestCase):
         tag = rsp['applications']['radiotag']
         vis = rsp['applications']['radiovis']
 
-        self.assertEqual(False, epg['supported'])
+        self.assertEqual(True, epg['supported'])
         self.assertEqual(False, tag['supported'])
         self.assertEqual(True, vis['supported'])
         self.assertEqual(
