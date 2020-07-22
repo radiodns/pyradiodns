@@ -48,3 +48,7 @@ class RadioDNS_Service:
     except dns.resolver.NXDOMAIN:
       # Non-existent domain
       return False
+    except dns.resolver.NOANSWER:
+      # no authoritive answer
+      return False
+    
