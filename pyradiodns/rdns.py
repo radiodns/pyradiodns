@@ -1,7 +1,7 @@
-from radiodns.am_service import RadioDNS_AMService
-from radiodns.dab_service import RadioDNS_DABService
-from radiodns.fm_service import RadioDNS_FMService
-from radiodns.hd_service import RadioDNS_HDService
+from .radiodns.am_service import RadioDNS_AMService
+from .radiodns.dab_service import RadioDNS_DABService
+from .radiodns.fm_service import RadioDNS_FMService
+from .radiodns.hd_service import RadioDNS_HDService
 
 
 class RadioDNS:
