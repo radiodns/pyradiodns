@@ -1,4 +1,4 @@
-from service import RadioDNS_Service
+from .service import RadioDNS_Service
 import re
 
 class RadioDNS_DABService(RadioDNS_Service):
