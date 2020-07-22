@@ -19,7 +19,7 @@ class RadioDNS_Service:
       return False
     if len(r) == 0:
       return False
-    self.cached_authorative_fqdn = r[0].target
+    self.cached_authorative_fqdn = r[0].target.to_text()
     return self.cached_authorative_fqdn
     
   def resolve(self, application_id, transport_protocol='TCP'):
@@ -39,7 +39,7 @@ class RadioDNS_Service:
       results = []
       for answer in r:
         results.append({
-          'target': answer.target,
+          'target': answer.target.to_text(),
           'port': answer.port,
           'priority': answer.priority,
           'weight': answer.weight,
