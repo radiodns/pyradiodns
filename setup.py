@@ -5,4 +5,7 @@ setup(name='pyradiodns',
       author='samstarling',
       url='http://github.com/radiodns/pyradiodns',
       packages=['pyradiodns', 'pyradiodns.radiodns'],
-      install_requires=['dnspython<=1.16.0'])
+      if sys.version_info[0] < 3:
+          install_requires = ["dnspython<2.0"]
+      else:
+          install_requires = ["dnspython>=2.0"]
