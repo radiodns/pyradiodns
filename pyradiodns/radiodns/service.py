@@ -2,19 +2,21 @@ import dns.resolver
 
 class RadioDNS_Service:
   
-  dns_resolver = None
+  dns_resolver = dns.resolver # exists for backwards compatability
   cached_authorative_fqdn = None
   
   def __init__(self):
     pass
     
   def setupDNSResolver(self):
-    self.dns_resolver = dns.resolver
+    warnings.warn('this method no longer has any functionality, you can safely remove calls to this method',
+                  DeprecationWarning, stacklevel=2)
     
   def resolveAuthorativeFQDN(self):
-    if not self.dns_resolver:
-      self.setupDNSResolver()
-    r = self.dns_resolver.query(self.fqdn(), 'CNAME')
+    try:
+      r = dns.resolver.resolve(self.fqdn(), 'CNAME')
+    except AttributeError:
+      r = dns.resolver.query(self.fqdn(), 'CNAME')
     if not r:
       return False
     if len(r) == 0:
@@ -30,10 +32,11 @@ class RadioDNS_Service:
     if not authorative_fqdn:
       return False
     application_fqdn = "_%s._%s.%s" % (application_id.lower(), transport_protocol.lower(), authorative_fqdn)
-    if not self.dns_resolver:
-      self.setupDNSResolver()
     try:
-      r = self.dns_resolver.query(application_fqdn, 'SRV')
+      try:
+        r = dns.resolver.resolve(application_fqdn, 'SRV')
+      except AttributeError:
+        r = dns.resolver.query(application_fqdn, 'SRV')
       if len(r) == 0:
         return False
       results = []
@@ -51,4 +54,3 @@ class RadioDNS_Service:
     except dns.resolver.NoAnswer:
       # no authoritive answer
       return False
-    
