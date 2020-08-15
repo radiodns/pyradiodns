@@ -1,6 +1,8 @@
 import unittest
 from pyradiodns.radiodns.am_service import RadioDNS_AMService
 
+# this tests backwards compatability with the former 'Service' classes
+
 class TestRadioDNSAMService(unittest.TestCase):
 
     def setUp(self):

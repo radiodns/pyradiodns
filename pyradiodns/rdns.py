@@ -1,8 +1,4 @@
-from .radiodns.am_service import RadioDNS_AMService
-from .radiodns.dab_service import RadioDNS_DABService
-from .radiodns.fm_service import RadioDNS_FMService
-from .radiodns.hd_service import RadioDNS_HDService
-
+from pyradiodns.bearer import AMBearer, DABBearer, FMBearer, HDBearer
 
 class RadioDNS:
 
@@ -13,19 +9,19 @@ class RadioDNS:
     ]
 
     def lookup_am(self, type=None, sid=None):
-        service = RadioDNS_AMService(type, sid)
+        service = AMBearer(type, sid)
         return self.__lookup(service)
 
     def lookup_dab(self, ecc=None, eid=None, sid=None, scids=None, data=None):
-        service = RadioDNS_DABService(ecc, eid, sid, scids, data)
+        service = DABBearer(ecc, eid, sid, scids, data)
         return self.__lookup(service)
 
     def lookup_fm(self, country=None, pi=None, frequency=None):
-        service = RadioDNS_FMService(country, pi, frequency)
+        service = FMBearer(country, pi, frequency)
         return self.__lookup(service)
 
     def lookup_hd(self, cc=None, tx=None, mid=None):
-        service = RadioDNS_HDService(cc, tx, mid)
+        service = HDBearer(cc, tx, mid)
         return self.__lookup(service)
 
     def __lookup(self, service):
