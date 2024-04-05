@@ -4,6 +4,7 @@ class RadioDNS:
 
     KNOWN_APPLICATIONS = [
         ('radioepg', 'TCP'),
+        ('radiospi', 'TCP'),
         ('radiotag', 'TCP'),
         ('radiovis', 'TCP'),
     ]
