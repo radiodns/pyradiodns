@@ -3,7 +3,7 @@ from setuptools import setup
 if sys.version_info[0] < 3:
       install_requires = ["dnspython<2.0"]
 else:
-      install_requires = ["dnspython>=2.0"]
+      install_requires = ["dnspython>=2.6.1"]
       
 setup(name='pyradiodns',
       version='0.1',
